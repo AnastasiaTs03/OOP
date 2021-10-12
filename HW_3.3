@@ -1,0 +1,85 @@
+using System;
+
+namespace HW_Tsimbal_3._3
+{
+    class Converter
+    {
+        public double usd;
+        public double eur;
+
+        public Converter(double usd, double eur)
+        {
+            this.usd = usd;
+            this.eur = eur;
+        }
+
+        public double FromUanToEur(double uan)
+        {
+            return uan / eur;
+        }
+
+        public double FromUanToUsd (double uan)
+        {
+            return uan / usd;
+        }
+
+        public double FromEurToUan (double uan)
+        {
+            return eur * uan;
+        }
+
+        public double FromUsdToUan (double uan)
+        {
+            return usd * uan;
+        }
+        public double FromUsdToEur(double uan)
+        {
+            return (uan * usd) / eur;
+        }
+        public double FromEurToUsd(double uan)
+        {
+            return (uan * eur) / usd;
+        }
+
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Converter first = new Converter(26.30, 30.66);
+            Console.WriteLine("Початкова валюта: uan, eur, usd.");
+            string a = Console.ReadLine();
+
+            Console.WriteLine("Конвертувати в: uan, eur, usd.");
+            string b = Console.ReadLine();
+
+            Console.WriteLine("Сума для конвертацыъ");
+            double c = double.Parse(Console.ReadLine());
+            
+            if (a == b)
+            {
+                Console.WriteLine(c + a);
+            }
+           
+
+            if (a == "uan")
+            {
+                if (b == "usd") Console.WriteLine("Результат: {0} {1} " , first.FromUanToUsd(c), b);
+                if (b == "eur") Console.WriteLine("Результат: {0} {1} ", first.FromUanToEur(c), b);
+            }
+
+            if (a == "usd")
+            {
+                if (b == "uan") Console.WriteLine("Результат: {0} {1} ", first.FromUsdToUan(c), b);
+                if (b == "eur") Console.WriteLine("Результат: {0} {1} ", first.FromUsdToEur(c), b);
+            }
+
+            if (a == "eur")
+            {
+                if (b == "uan") Console.WriteLine("Результат: {0} {1} ", first.FromEurToUan(c), b);
+                if (b == "usd") Console.WriteLine("Результат: {0} {1} ", first.FromEurToUsd(c), b);
+            }
+        }
+    }
+}
